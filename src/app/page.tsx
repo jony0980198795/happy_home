@@ -1,55 +1,31 @@
 'use client'
+
 import React, { useEffect, useState } from 'react';
-import { Settings, ShieldCheck, Zap, Phone, ArrowRight, Factory, Droplets, Wind, Paintbrush, Share2, ChevronLeft, ChevronRight, Cable, LandPlot, CirclePile, Waypoints, Axe, PackageSearch } from 'lucide-react';
+import { Settings, ShieldCheck, Zap, Phone, ArrowRight, Factory, Droplets, Wind, Paintbrush, Share2, ChevronLeft, ChevronRight, Cable, LandPlot, CirclePile, Waypoints, Axe, PackageSearch, Sun, Car, AirVent, DoorClosed, Blinds, Grid2X2, Sparkle, Wrench, Award, Package, PhoneCall } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import { sliderData } from '../data/heroSliderData';
+import { servicesQuickLinks } from '../data/servicesData';
+import { featuresData } from '../data/featuresData';
 
-const tmc_image = [
-  { "id": "002", "title": "Automation", "desc": "ระบบบำบัดอากาศและเครื่องดูดอากาศมาตรฐานโรงงาน", "file_path": "/catalog/automation/auto_01.png" },
-  { "id": "001", "title": "Control System", "desc": "เทคโนโลยีตรวจสอบคุณภาพแม่นยำสูง", "file_path": "/catalog/cab/cab_01.png" },
-  { "id": "003", "title": "Conveyor", "desc": "เครื่องมิกเซอร์ประสิทธิภาพสูงสำหรับกระบวนการผลิต", "file_path": "/catalog/conveyor/con_04.png" },
-  { "id": "004", "title": "Dismantle", "desc": "เครื่องอัดตะกอนและระบบบำบัดน้ำเสียครบวงจร", "file_path": "/catalog/dismantle/dis_02.png" },
-  { "id": "005", "title": "Battery Production Line", "desc": "ผู้นำด้านการออกแบบและติดตั้งไลน์ผลิตแบตเตอรี่", "file_path": "/catalog/floor/floored_01.png" }
+const ht_image = [
+  { "id": "002", "title": "Air-Conditioners", "desc": "แอร์โซล่าเซลล์", "file_path": "/catalog/air-conditioners/air-01.jpg" },
+  { "id": "001", "title": "Solar Cell 5kW Grid Tied", "desc": "โซล่าเซลล์ 5 kW", "file_path": "/catalog/solar-cell-5kw-grid-tied/solar_01.jpg" },
+  { "id": "003", "title": "Home Security Systems", "desc": "ระบบความปลอดภัยบ้าน", "file_path": "/catalog/home-security-system/home-sec-01.jpg" },
+  { "id": "004", "title": "CCTV Surveillance", "desc": "กล้องวงจรปิด CCTV", "file_path": "/catalog/cctv-surveillance/cctv_01.jpg" },
 ];
-const sliderData = [
-  {
-    id: 1,
-    title: "Advanced PLC Control",
-    desc: "ระบบควบคุมอัตโนมัติอัจฉริยะสำหรับโรงงานยุคใหม่",
-    src: "/tmc_company/plc.png",
-    tag: "Automation"
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
   },
-  {
-    id: 2,
-    title: "Professional Paint System",
-    desc: "เทคโนโลยีไลน์พ่นสีอัตโนมัติ ความแม่นยำสูง",
-    src: "/tmc_company/paint_sprayer.png",
-    tag: "Painting Line"
-  },
-  {
-    id: 3,
-    title: "Conveyor Belt Solutions",
-    desc: "ระบบสายพานลำเลียงที่ออกแบบตามพื้นที่หน้างานจริง",
-    src: "/tmc_company/belt.png",
-    tag: "Logistics"
-  },
-  {
-    id: 4,
-    title: "Wastewater Treatment",
-    desc: "นวัตกรรมจัดการน้ำเสียเพื่อสิ่งแวดล้อมที่ยั่งยืน",
-    src: "/catalog/pipe/pipeed_02.png",
-    tag: "Environmental"
-  },
-  {
-    id: 5,
-    title: "Reliable Maintenance",
-    desc: "บริการซ่อมบำรุงและดูแลระบบโดยทีมวิศวกร",
-    src: "/tmc_company/repire.png",
-    tag: "Services"
-  }
-];
+};
+
 
 const container = {
   hidden: { opacity: 0 },
@@ -67,7 +43,7 @@ const item = {
 
 export default function HomePage() {
   const [current, setCurrent] = useState(0);
-  const {t}=useLanguage();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -81,73 +57,124 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white text-slate-800 font-sans">
-      <section className="relative w-full min-h-[85vh] flex items-center overflow-hidden bg-slate-900">
-        {/* Background Image Overlay (แนะนำให้ทำ Slider ในขั้นต่อไป แต่ตอนนี้จะใช้รูปแรกเป็นหลัก) */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-transparent"></div>
+      <section className="relative w-full min-h-[90vh] flex items-center overflow-hidden bg-slate-950 py-16 lg:py-0">
+        {/* 1. Background Visual Effects (Ambient Lighting & Grid Pattern) */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          {/* Glow Effects */}
+          <div className="absolute -top-40 -left-20 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[140px]" />
+          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-cyan-500/15 rounded-full blur-[120px]" />
+
+          {/* Subtle Background Pattern */}
+          <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/0 via-slate-950/60 to-slate-950" />
         </div>
 
-        <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
+        <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+
+          {/* 2. Text Content Column (6 cols on lg) */}
           <motion.div
             variants={container}
             initial="hidden"
             animate="visible"
-            className="text-white space-y-8"
+            className="lg:col-span-7 xl:col-span-6 text-white space-y-8"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/30 border border-blue-400/50 text-blue-200 text-sm font-medium backdrop-blur-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            {/* Badge */}
+            <motion.div variants={itemVariants} className="inline-flex">
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-300 text-sm font-semibold backdrop-blur-md shadow-inner">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span>
+                </span>
+                <span className="tracking-wide">{t.home.badge}</span>
+              </div>
+            </motion.div>
+
+            {/* Heading */}
+            <motion.h1
+              variants={itemVariants}
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.1]"
+            >
+              <span className="bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-200 bg-clip-text text-transparent drop-shadow-sm">
+                {t.home.title.highlight}
               </span>
-              {t.home.badge}
-            </div>
+              <br />
+              <span className="text-white mt-2 block">{t.home.title.main}</span>
+            </motion.h1>
 
-            <h1 className="text-5xl lg:text-7xl font-extrabold leading-tight">
-              {t.home.title.highlight}<br />
-              {t.home.title.main}
-            </h1>
-
-            <p className="text-lg text-slate-300 max-w-xl leading-relaxed">
+            {/* Description */}
+            <motion.p
+              variants={itemVariants}
+              className="text-base sm:text-lg text-slate-300 max-w-xl leading-relaxed font-normal"
+            >
               {t.home.description}
-            </p>
+            </motion.p>
 
-            <div className="flex flex-wrap gap-4">
-              <Link href="/portfolio" className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold flex items-center gap-2 transition-all transform hover:translate-x-1 shadow-lg shadow-blue-500/20">
-                {t.home.cta_primary} <ArrowRight size={20} />
+            {/* CTA Buttons */}
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 pt-2">
+              <Link
+                href="/portfolio"
+                className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white rounded-2xl font-bold flex items-center gap-3 transition-all duration-300 shadow-xl shadow-blue-600/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 active:translate-y-0"
+              >
+                <span>{t.home.cta_primary}</span>
+                <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
-              <Link href="tel:0613529166" className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md rounded-xl font-bold flex items-center gap-2 transition-all">
-                <Phone size={20} /> {t.home.contact_phone}
+
+              <Link
+                href="tel:0613529166"
+                className="px-8 py-4 bg-slate-900/60 hover:bg-slate-800/80 text-white border border-slate-700/80 hover:border-slate-500/80 backdrop-blur-md rounded-2xl font-semibold flex items-center gap-3 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
+              >
+                <Phone size={18} className="text-blue-400" />
+                <span>{t.home.contact_phone}</span>
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
 
-          {/* Image Display Grid (Thumbnail Showcase) */}
+          {/* 3. Image Display Showcase (Staggered Grid) */}
           <motion.div
             variants={container}
             initial="hidden"
             animate="visible"
-            className="hidden lg:grid grid-cols-2 gap-4"
+            className="hidden lg:grid lg:col-span-5 xl:col-span-6 grid-cols-2 gap-4 relative"
           >
-            {tmc_image.slice(0, 4).map((img, index) => (
-              <div
-                key={img.id}
-                className={`relative overflow-hidden rounded-2xl border border-white/10 group shadow-2xl transition-all duration-500 ${index === 1 || index === 2 ? 'mt-8' : ''}`}
-              >
-                <div className="relative h-48 w-full">
-                  <Image
-                    src={img.file_path}
-                    alt={img.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 group-hover:bg-transparent transition-colors"></div>
-                  <div className="absolute bottom-3 left-3">
-                    <p className="text-[10px] text-blue-200 font-bold uppercase tracking-widest">{img.title || "TMC Solution"}</p>
+            {/* Subtle Ambient Light behind images */}
+            <div className="absolute inset-0 bg-blue-500/10 blur-3xl -z-10 rounded-full" />
+
+            {ht_image.slice(0, 4).map((img: any, index: number) => {
+              // คำนวณการเยื้อง Offset ให้ดูมีจังหวะเป็นธรรมชาติ
+              const isStaggered = index === 1 || index === 3;
+
+              return (
+                <motion.div
+                  key={img.id}
+                  variants={itemVariants}
+                  className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/40 p-2 backdrop-blur-md transition-all duration-500 hover:border-blue-400/50 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-1.5 ${isStaggered ? 'mt-8' : ''
+                    }`}
+                >
+                  <div className="relative h-48 sm:h-52 w-full overflow-hidden rounded-2xl bg-slate-800">
+                    <Image
+                      src={img.file_path}
+                      alt={img.title || "ht Solution Showcase"}
+                      fill
+                      sizes="(max-width: 1200px) 25vw, 20vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    />
+
+                    {/* Overlay Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300" />
+
+                    {/* Title Overlay Tag */}
+                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                      <span className="text-[11px] font-bold text-white tracking-wider uppercase drop-shadow-md truncate max-w-[80%]">
+                        {img.title || "ht Solution"}
+                      </span>
+                      <div className="w-6 h-6 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <Sparkle className="w-3 h-3 text-blue-300" />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
@@ -162,28 +189,15 @@ export default function HomePage() {
               </h2>
               <div className="w-20 h-1.5 bg-blue-600 mx-auto rounded-full mb-4"></div> {/* เพิ่มเส้นใต้เพื่อให้ดูเป็นสากล */}
               <p className="text-lg text-slate-600">
-                นวัตกรรมเพื่อโรงงานอุตสาหกรรมยุคใหม่
-                ออกแบบและติดตั้งโดยวิศวกรผู้เชี่ยวชาญจาก TMC
+                Happy Home Service HY — มั่นใจทุกงานช่าง โดยทีมช่างมีใบอนุญาตถูกต้อง 100%
+                ครบ จบ ในที่เดียว | โซล่าเซลล์ แอร์ ระบบความปลอดภัย และงานตกแต่งบ้าน
               </p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { title: "ออกแบบเครื่องอัตโนมัติ", paht: "/services", icon: <Factory /> },
-              { title: "ระบบควบคุม PLC", paht: "/services", icon: <Settings /> },
-              { title: "สายพานลำเลียง", paht: "/services", icon: <Share2 /> },
-              { title: "ไลน์พ่นสีอัตโนมัติ", paht: "/services", icon: <Paintbrush /> },
-              { title: "ระบบบำบัดน้ำเสีย", paht: "/services", icon: <Droplets /> },
-              { title: "ระบบบำบัดอากาศเสีย", paht: "/services", icon: <Wind /> },
-              { title: "ตู้คอนโทรล", paht: "/services", icon: <Cable /> },
-              { title: "งานพื้น", paht: "/services", icon: <LandPlot /> },
-              { title: "โครงสร้าง", paht: "/services", icon: <CirclePile /> },
-              { title: "ระบบท่อ DUST", paht: "/services", icon: <Waypoints /> },
-              { title: "งานรื้อถอน ขนย้าย", paht: "/services", icon: <Axe /> },
-              { title: "สินค้า", paht: "/services", icon: <PackageSearch /> },
-            ].map((product, idx) => (
-              <Link key={idx} href={product.paht}>
+            {servicesQuickLinks.map((product, idx) => (
+              <Link key={idx} href={product.path}>
                 <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -201,80 +215,53 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <section className="relative w-full h-[600px] lg:h-[750px] overflow-hidden bg-slate-900 group">
-        {/* Slides */}
-        {sliderData.map((slide, index) => (
-          <div
-            key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === current ? "opacity-100 z-10" : "opacity-0 z-0"
-              }`}
-          >
-            {/* Image */}
-            <Image
-              src={slide.src}
-              alt={slide.title}
-              fill
-              className="object-cover scale-105 transition-transform duration-[5000ms] ease-out group-hover:scale-100"
-              priority={index === 0}
-            />
 
-            {/* Overlay & Content */}
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent flex items-center">
-              <div className="container mx-auto px-10 lg:px-20">
-                <div className={`max-w-xl transition-all duration-700 delay-300 transform ${index === current ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                  }`}>
-                  <span className="inline-block px-4 py-1 bg-blue-600 text-white text-xs font-bold rounded-full mb-4 uppercase tracking-widest">
-                    {slide.tag}
-                  </span>
-                  <h2 className="text-4xl lg:text-7xl font-black text-white mb-6 leading-tight">
-                    {slide.title}
-                  </h2>
-                  <p className="text-lg lg:text-xl text-slate-200 mb-10 leading-relaxed">
-                    {slide.desc}
-                  </p>
-                  <div className="flex gap-4">
-                    <Link
-                      href="/services"
-                      className="inline-block bg-white text-blue-900 px-10 py-4 rounded-xl font-black shadow-xl hover:bg-blue-50 hover:scale-105 active:scale-95 transition-all duration-300 group"
-                    >
-                      <span className="flex items-center gap-2">
-                        รายละเอียดสินค้า
-                        <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                      </span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+      {/* --- FINAL CALL TO ACTION --- */}
+      <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
+        {/* พื้นหลังตกแต่งด้วยแสง Glow เบาๆ */}
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-emerald-600/20 rounded-full blur-3xl pointer-events-none" />
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-4xl mx-auto px-6 text-center relative z-10"
+        >
+          <span className="text-blue-400 font-bold text-sm tracking-wider uppercase mb-3 block">
+            Get Free Consultation
+          </span>
+
+          <h2 className="text-3xl lg:text-4xl font-extrabold mb-6 leading-tight text-white">
+            ยกระดับความปลอดภัยและประหยัดค่าไฟให้บ้านคุณวันนี้
+          </h2>
+
+          <p className="text-slate-300 mb-10 text-lg max-w-2xl mx-auto leading-relaxed">
+            ยินดีให้คำปรึกษา ประเมินหน้างาน และออกแบบระบบโซล่าเซลล์ แอร์บ้าน กล้องวงจรปิด และระบบไฟฟ้าฟรี โดยทีมช่างผู้เชี่ยวชาญพร้อมใบอนุญาตถูกต้อง
+          </p>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            {/* ปุ่มโทรสายด่วน */}
+            <Link
+              href="tel:0861206859"
+              className="flex items-center justify-center gap-2.5 bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-500 shadow-lg shadow-blue-600/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <Phone size={20} /> โทร: 086-120-6859
+            </Link>
+
+            {/* ปุ่มประเมินหน้างานผ่าน LINE */}
+            <div
+              className="flex items-center justify-center gap-2.5 bg-emerald-500 text-white px-8 py-4 rounded-xl font-bold hover:bg-emerald-400 shadow-lg shadow-emerald-500/30 transition-all border border-emerald-400/30 transform hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <span>แอดไลน์ส่งรูปประเมินหน้างาน</span>
             </div>
           </div>
-        ))}
 
-        {/* Navigation Controls */}
-        <div className="absolute bottom-10 right-10 z-20 flex gap-4">
-          <button
-            onClick={prevSlide}
-            className="p-4 rounded-full border border-white/20 text-white hover:bg-white hover:text-blue-900 transition-all backdrop-blur-md"
-          >
-            <ChevronLeft size={24} />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="p-4 rounded-full border border-white/20 text-white hover:bg-white hover:text-blue-900 transition-all backdrop-blur-md"
-          >
-            <ChevronRight size={24} />
-          </button>
-        </div>
-
-        {/* Progress Indicators */}
-        <div className="absolute bottom-10 left-10 z-20 flex gap-2">
-          {sliderData.map((_, i) => (
-            <div
-              key={i}
-              className={`h-1 transition-all duration-500 rounded-full ${i === current ? "w-12 bg-blue-500" : "w-4 bg-white/30"
-                }`}
-            />
-          ))}
-        </div>
+          <p className="mt-8 text-slate-400 text-sm font-medium">
+            ⚡ ให้บริการและติดตั้งโดยช่างมีใบอนุญาต ครอบคลุมพื้นที่หาดใหญ่ สงขลา และจังหวัดใกล้เคียง
+          </p>
+        </motion.div>
       </section>
       {/* --- VALUE PROPOSITION (จุดเด่น) --- */}
       <section className="py-20 bg-white">
@@ -286,63 +273,168 @@ export default function HomePage() {
           className="max-w-7xl mx-auto px-6"
         >
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">ทำไมต้องเลือก TMC Thai Mechatronics?</h2>
-            <div className="w-20 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+              ทำไมต้องเลือก Happy Home Service HY?
+            </h2>
+            <div className="w-20 h-1.5 bg-blue-600 mx-auto rounded-full mb-4"></div>
+            <p className="text-slate-600 max-w-xl mx-auto text-base sm:text-lg">
+              บริการงานช่างและระบบพลังงานสะอาดมาตรฐานสูง โดยทีมงานมืออาชีพในพื้นที่หาดใหญ่-สงขลา
+            </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Settings className="text-blue-600" size={32} />,
-                title: "ออกแบบตามความต้องการ",
-                desc: "Custom Design เครื่องจักรให้เหมาะสมกับพื้นที่และงบประมาณของลูกค้าแต่ละราย"
-              },
-              {
-                icon: <ShieldCheck className="text-blue-600" size={32} />,
-                title: "ความเชื่อมั่นกว่า 200 บริษัท",
-                desc: "ได้รับความไว้วางใจจากโรงงานอุตสาหกรรมทั่วประเทศ ด้วยผลงานที่พิสูจน์แล้วว่าใช้งานได้จริง"
-              },
-              {
-                icon: <Zap className="text-blue-600" size={32} />,
-                title: "บริการ 24 ชั่วโมง",
-                desc: "ดูแลหลังการขายและให้คำปรึกษาทางเทคนิคตลอด 24 ชม. เพื่อให้ไลน์ผลิตของคุณไม่สะดุด"
-              },
-            ].map((item, idx) => (
-              <div key={idx} className="p-8 border border-slate-100 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl hover:border-blue-200 transition-all group">
-                <div className="mb-6 p-3 bg-white inline-block rounded-xl shadow-sm group-hover:scale-110 transition-transform">
-                  {item.icon}
+            {featuresData.map((item, idx) => {
+              // 1. ดึง Icon Component ออกมาตั้งชื่อตัวแปรที่ขึ้นต้นด้วยตัวพิมพ์ใหญ่
+              const IconComponent = item.icon;
+
+              return (
+                <div
+                  key={item.id || idx}
+                  className="p-8 border border-slate-100 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl hover:border-blue-200 transition-all group"
+                >
+                  <div className="mb-6 p-3 bg-white inline-block rounded-xl shadow-sm group-hover:scale-110 transition-transform">
+                    {/* 2. เรียกใช้งานเป็น Tag <IconComponent /> แทน {item.icon} */}
+                    <IconComponent className="text-blue-600" size={32} />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-slate-900">
+                    {item.title}
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-slate-900">{item.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </motion.div>
+      </section>
+      <section className="relative w-full min-h-[650px] lg:h-[780px] overflow-hidden bg-slate-950 group flex items-center">
+        {/* Background Slides */}
+        {sliderData.map((slide, index) => (
+          <div
+            key={slide.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === current ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+              }`}
+          >
+            {/* Background Image with Blur Overlay */}
+            <Image
+              src={slide.src}
+              alt={slide.title}
+              fill
+              className="object-cover scale-105 transition-transform duration-[7000ms] ease-out group-hover:scale-100 opacity-40"
+              priority={index === 0}
+            />
+
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+
+            {/* Main Content Layout */}
+            <div className="relative z-20 container mx-auto px-6 lg:px-16 h-full flex items-center py-20 lg:py-0">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
+
+                {/* Left Column: Text & Actions */}
+                <div
+                  className={`lg:col-span-7 transition-all duration-700 delay-200 transform ${index === current ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                    }`}
+                >
+                  {/* Tag Badge */}
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-blue-600/90 backdrop-blur-md text-white text-xs font-bold rounded-full mb-6 uppercase tracking-wider shadow-lg shadow-blue-600/20">
+                    <ShieldCheck size={14} />
+                    <span>{slide.tag}</span>
+                  </div>
+
+                  {/* Title */}
+                  <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight tracking-tight">
+                    {slide.title}
+                  </h1>
+
+                  {/* Description */}
+                  <p className="text-base sm:text-lg lg:text-xl text-slate-300 mb-8 leading-relaxed max-w-2xl font-normal">
+                    {slide.desc}
+                  </p>
+
+                  {/* Action Buttons */}
+                  <div className="flex flex-wrap items-center gap-4">
+                    <Link
+                      href={"/services"}
+                      className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-xl font-bold shadow-xl shadow-blue-600/30 hover:bg-blue-500 hover:scale-105 active:scale-95 transition-all duration-300"
+                    >
+                      <span>ดูรายละเอียดบริการ</span>
+                      <ArrowRight size={18} />
+                    </Link>
+
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center gap-2 bg-slate-800/80 hover:bg-slate-800 text-white border border-slate-700 px-7 py-4 rounded-xl font-bold backdrop-blur-md hover:border-slate-600 transition-all duration-300"
+                    >
+                      <PhoneCall size={18} className="text-blue-400" />
+                      <span>ปรึกษาช่าง</span>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Right Column: Visual Accent Card (Desktop Only) */}
+                <div
+                  className={`hidden lg:block lg:col-span-5 transition-all duration-1000 delay-400 transform ${index === current ? "scale-100 opacity-100" : "scale-95 opacity-0"
+                    }`}
+                >
+                  <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/80 group/card">
+                    <Image
+                      src={slide.src}
+                      alt={slide.title}
+                      fill
+                      className="object-cover group-hover/card:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
+
+                    <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-slate-900/80 backdrop-blur-md border border-white/10">
+                      <p className="text-xs text-blue-400 font-bold uppercase tracking-wider mb-1">
+                        Happy Home Service HY
+                      </p>
+                      <p className="text-sm font-semibold text-white">
+                        ติดตั้งโดยทีมช่างมีใบอนุญาตมาตรฐาน ปลอดภัย 100%
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        ))}
+
+        {/* Navigation Controls */}
+        <div className="absolute bottom-8 right-6 lg:right-16 z-30 flex items-center gap-3">
+          <button
+            onClick={prevSlide}
+            aria-label="Previous Slide"
+            className="p-3.5 rounded-xl border border-white/10 text-white bg-slate-900/50 hover:bg-blue-600 hover:border-blue-600 transition-all backdrop-blur-md active:scale-95"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            onClick={nextSlide}
+            aria-label="Next Slide"
+            className="p-3.5 rounded-xl border border-white/10 text-white bg-slate-900/50 hover:bg-blue-600 hover:border-blue-600 transition-all backdrop-blur-md active:scale-95"
+          >
+            <ChevronRight size={20} />
+          </button>
+        </div>
+
+        {/* Progress Indicators */}
+        <div className="absolute bottom-8 left-6 lg:left-16 z-30 flex items-center gap-2">
+          {sliderData.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className={`h-1.5 transition-all duration-500 rounded-full ${i === current ? "w-10 bg-blue-500" : "w-3 bg-white/20 hover:bg-white/50"
+                }`}
+            />
+          ))}
+        </div>
       </section>
 
-      {/* --- FINAL CALL TO ACTION --- */}
-      <section className="py-20 bg-white">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl mx-auto px-6 text-center text-black mb-30"
-        >
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">เริ่มยกระดับไลน์ผลิตของคุณวันนี้</h2>
-          <p className="text-black mb-10 text-lg">
-            ไม่ว่าโปรเจกต์จะเล็กหรือใหญ่ วิศวกรของ TMC พร้อมให้คำปรึกษาและออกแบบระบบที่ดีที่สุดให้กับคุณ
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="tel:0613529166" className="flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all">
-              <Phone size={20} /> 061-352-9166
-            </Link>
-            <Link href="mailto:thai.macha2017@gmail.com" className="flex items-center justify-center gap-2 bg-blue-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-800 transition-all border border-blue-500">
-              ขอใบเสนอราคา
-            </Link>
-          </div>
-          <p className="mt-8 text-black text-sm">บริการครอบคลุมการติดตั้งและดูแลหลังการขายทั่วประเทศ</p>
-        </motion.div>
-      </section>
     </div>
   );
 }

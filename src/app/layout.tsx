@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TMCthaimechatronics",
+  title: "Happy home service HY",
   description: "บริษัท ทีเอ็มซี ไทยแมคคาทรอนิคส์ ออกแบบและผลิตระบบอัตโนมัติ ตั้งแต่ระบบบำบัดมลพิษไปจนถึงไลน์ผลิตอัจฉริยะ ควบคุมด้วย PLC ประสิทธิภาพสูง",
 };
 

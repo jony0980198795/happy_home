@@ -1,7 +1,5 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Phone, Mail, MapPin, Facebook, MessageCircle, ArrowRight, Shield } from 'lucide-react';
+import Link from "next/link";
+import { MapPin, Phone, Mail, Facebook, MessageCircle } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,68 +9,98 @@ export default function Footer() {
       {/* ส่วนกลาง: ข้อมูลหลัก */}
       <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
 
-        {/* คอลัมน์ 1: ข้อมูลบริษัท */}
+        {/* คอลัมน์ 1: ข้อมูลแบรนด์ */}
         <div className="space-y-6">
           <Link href="/" className="flex flex-col">
-            <span className="text-2xl font-black tracking-tighter text-white">TMC</span>
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-500">Thaimechatronics</span>
+            <span className="text-2xl font-black tracking-tight text-white">
+              Happy Home Service <span className="text-blue-500">HY</span>
+            </span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-400">
+              Solar Cell & Home Service Solution
+            </span>
           </Link>
-          <p className="text-sm leading-relaxed">
-            บริษัท ทีเอ็มซี ไทยแมคคาทรอนิคส์ จำกัด <br />
-            ผู้เชี่ยวชาญด้านการออกแบบและผลิตเครื่องจักรอัตโนมัติควบคุมด้วยระบบ PLC
-            และโซลูชันสิ่งแวดล้อมครบวงจร
+          <p className="text-sm leading-relaxed text-slate-400">
+            ผู้เชี่ยวชาญด้านการติดตั้งระบบโซล่าเซลล์ขายไฟ, ตู้ชาร์จ EV, แอร์บ้าน, กล้องวงจรปิด CCTV, ประตูรีโมทอัตโนมัติ และงานตกแต่งบ้านครบวงจร โดยทีมช่างมีใบอนุญาตมาตรฐาน ปลอดภัย ไม่ทิ้งงาน
           </p>
         </div>
 
         {/* คอลัมน์ 2: สินค้าและบริการ */}
         <div>
-          <h4 className="text-white font-bold mb-6 tracking-wide">สินค้าและบริการ</h4>
-          <ul className="space-y-4 text-sm">
-            <li><Link href="/services/automation" className="hover:text-blue-400 transition-colors">ระบบควบคุม PLC</Link></li>
-            <li><Link href="/services/conveyor" className="hover:text-blue-400 transition-colors">สายพานลำเลียง</Link></li>
-            <li><Link href="/services/wastewater" className="hover:text-blue-400 transition-colors">ระบบบำบัดน้ำเสีย</Link></li>
-            <li><Link href="/services/air-pollution" className="hover:text-blue-400 transition-colors">ระบบบำบัดอากาศเสีย</Link></li>
+          <h4 className="text-white font-bold mb-6 tracking-wide border-l-4 border-blue-500 pl-3">
+            บริการของเรา
+          </h4>
+          <ul className="space-y-3 text-sm">
+            <li>
+              <Link href="/services/solar-air-conditioner" className="hover:text-blue-400 transition-colors">
+                แอร์โซล่าเซลล์
+              </Link>
+            </li>
+            <li>
+              <Link href="/services/solar-cell-5kw" className="hover:text-blue-400 transition-colors">
+                โซล่าเซลล์ 5 kW (ระบบขายไฟ)
+              </Link>
+            </li>
+            <li>
+              <Link href="/services/ev-charger" className="hover:text-blue-400 transition-colors">
+                วงจรไฟฟ้าตู้ชาร์จ EV (2 รถ)
+              </Link>
+            </li>
+            <li>
+              <Link href="/services/air-conditioning" className="hover:text-blue-400 transition-colors">
+                ติดตั้ง / ล้าง / ย้าย แอร์บ้าน
+              </Link>
+            </li>
+            <li>
+              <Link href="/services/cctv-security" className="hover:text-blue-400 transition-colors">
+                กล้องวงจรปิด CCTV & ประตูรีโมท
+              </Link>
+            </li>
+            <li>
+              <Link href="/services/curtain-partition" className="hover:text-blue-400 transition-colors">
+                ฉากกั้นแอร์ ผ้าม่าน & มุ้งลวด
+              </Link>
+            </li>
           </ul>
         </div>
 
         {/* คอลัมน์ 3: การติดต่อ */}
         <div>
-          <h4 className="text-white font-bold mb-6 tracking-wide">ติดต่อเรา</h4>
+          <h4 className="text-white font-bold mb-6 tracking-wide border-l-4 border-blue-500 pl-3">
+            ติดต่อเรา
+          </h4>
           <ul className="space-y-4 text-sm">
             <li className="flex items-start gap-3">
-              <MapPin size={18} className="text-blue-500 shrink-0" />
-              <span>329 ซอยพระรามที่ 2 ซอย 44 แขวงจอมทอง เขตจอมทอง กรุงเทพฯ 10150</span>
+              <MapPin size={18} className="text-blue-500 shrink-0 mt-0.5" />
+              <span className="text-slate-400">
+                ให้บริการครอบคลุมพื้นที่ อ.หาดใหญ่ จ.สงขลา และพื้นที่ใกล้เคียง
+              </span>
             </li>
             <li className="flex items-center gap-3">
               <Phone size={18} className="text-blue-500 shrink-0" />
-              <p>061-352-9166</p>
+              <Link href="tel:0861206859" className="hover:text-white transition-colors">
+                086-120-6859
+              </Link>
             </li>
             <li className="flex items-center gap-3">
               <Mail size={18} className="text-blue-500 shrink-0" />
-              <Link href="mailto:thai.macha2017@gmail.com" className="hover:text-white transition-colors text-xs">thai.macha2017@gmail.com</Link>
+              <Link href="mailto:happyhomeservicehy@gmail.com" className="hover:text-white transition-colors text-xs">
+                happyhomeservicehy@gmail.com
+              </Link>
             </li>
           </ul>
         </div>
+
         {/* คอลัมน์ 4: โซเชียลมีเดีย */}
         <div>
-          <h4 className="text-white font-bold mb-6 tracking-wide">ติดตามข่าวสาร</h4>
+          <h4 className="text-white font-bold mb-6 tracking-wide border-l-4 border-blue-500 pl-3">
+            ติดตามข่าวสาร & ประเมินงาน
+          </h4>
           <div className="flex flex-col gap-3 mb-6">
-            {/* Facebook Item */}
-            <Link
-              href="https://www.facebook.com/wct5238m"
-              className="group flex items-center gap-4 p-2 rounded-2xl hover:bg-blue-600/10 transition-all border border-transparent hover:border-blue-500/30"
-            >
-              <div className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all text-slate-400">
-                <Facebook size={20} />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Facebook</span>
-                <p className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">ไทยแมคคาทรอนิคส์</p>
-              </div>
-            </Link>
-
             {/* Line Item */}
-            <div
+            <Link
+              href="https://line.me/ti/p/0861206859"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group flex items-center gap-4 p-2 rounded-2xl hover:bg-green-600/10 transition-all border border-transparent hover:border-green-500/30"
             >
               <div className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center group-hover:bg-green-600 group-hover:text-white transition-all text-slate-400">
@@ -80,19 +108,24 @@ export default function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Line Official</span>
-                <p className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">0613529166</p>
+                <p className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
+                  ส่งรูปประเมินหน้างานฟรี
+                </p>
               </div>
-            </div>
+            </Link>
           </div>
-          <p className="text-xs text-slate-500">
-            สอบถามข้อมูลสินค้าและบริการได้ตลอด 24 ช.ม.
+          <p className="text-xs text-slate-500 leading-relaxed">
+            พร้อมปรึกษาและประเมินราคาหน้างานฟรีไม่มีค่าใช้จ่าย
           </p>
         </div>
+
       </div>
+
       {/* ส่วนท้ายสุด: Copyright */}
-      <div className="bg-black/30 py-6 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-center items-center gap-4 text-xs text-slate-500 font-medium">
-          <p>© {currentYear} TMC THAIMECHATRONICS CO., LTD. All rights reserved.</p>
+      <div className="bg-black/40 py-6 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500 font-medium">
+          <p>© {currentYear} HAPPY HOME SERVICE HY. All rights reserved.</p>
+          <p className="text-slate-600">ช่างมีใบอนุญาตมาตรฐานวิชาชีพ ปลอดภัย 100%</p>
         </div>
       </div>
     </footer>
