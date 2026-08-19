@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useEffect, useState } from 'react';
-import { Settings, ShieldCheck, Zap, Phone, ArrowRight, Factory, Droplets, Wind, Paintbrush, Share2, ChevronLeft, ChevronRight, Cable, LandPlot, CirclePile, Waypoints, Axe, PackageSearch, Sun, Car, AirVent, DoorClosed, Blinds, Grid2X2, Sparkle, Wrench, Award, Package, PhoneCall } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ShieldCheck, Phone, ArrowRight, ChevronLeft, ChevronRight, Sparkle, PhoneCall } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, Variants } from 'framer-motion';
@@ -34,12 +34,6 @@ const container = {
     transition: { staggerChildren: 0.12, delayChildren: 0.04 * i, stiffness: 100 },
   })
 }
-
-const item = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0 },
-};
-
 
 export default function HomePage() {
   const [current, setCurrent] = useState(0);
@@ -120,7 +114,7 @@ export default function HomePage() {
               </Link>
 
               <Link
-                href="tel:0613529166"
+                href="tel:0861206859"
                 className="px-8 py-4 bg-slate-900/60 hover:bg-slate-800/80 text-white border border-slate-700/80 hover:border-slate-500/80 backdrop-blur-md rounded-2xl font-semibold flex items-center gap-3 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
               >
                 <Phone size={18} className="text-blue-400" />
@@ -140,9 +134,7 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-blue-500/10 blur-3xl -z-10 rounded-full" />
 
             {ht_image.slice(0, 4).map((img: any, index: number) => {
-              // คำนวณการเยื้อง Offset ให้ดูมีจังหวะเป็นธรรมชาติ
               const isStaggered = index === 1 || index === 3;
-
               return (
                 <motion.div
                   key={img.id}
@@ -215,7 +207,164 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <section className="bg-stone-50 py-8 sm:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          {/* Header */}
+          <div className="mx-auto max-w-2xl text-center">
+            <h3 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+              มีรูปแบบสีผ้าม่าน
+              <span className="block text-stone-500">
+                ให้เลือกมากมาย
+              </span>
+            </h3>
 
+            <p className="mt-5 text-base leading-7 text-stone-600 sm:text-lg">
+              เลือกสีและลวดลายผ้าม่านที่เหมาะกับสไตล์บ้านของคุณ
+              พร้อมตัวเลือกหลากหลายเพื่อสร้างบรรยากาศที่ลงตัว
+            </p>
+          </div>
+
+          {/* Gallery */}
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                src: "/catalog/insect-screens-and-nets/color-1.png",
+                title: "โทนสีธรรมชาติ",
+                description: "อบอุ่น เรียบง่าย และเข้ากับการตกแต่งได้หลากหลาย",
+              },
+              {
+                src: "/catalog/insect-screens-and-nets/color-2.jpg",
+                title: "โทนสีโมเดิร์น",
+                description: "เพิ่มความทันสมัยและความโดดเด่นให้กับห้อง",
+              },
+              {
+                src: "/catalog/insect-screens-and-nets/color-3.png",
+                title: "โทนสีเข้ม",
+                description: "ให้ความรู้สึกหรูหรา สุขุม และมีเอกลักษณ์",
+              },
+            ].map((item, index) => (
+              <Link 
+                key={index}
+                href={'/preview/006/'}
+              >
+                <div
+                  key={index}
+                  className="group overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
+                >
+                  {/* Image */}
+                  <div className="relative aspect-[4/3] overflow-hidden bg-stone-100">
+                    <Image
+                      src={item.src}
+                      alt={item.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+                    {/* Number */}
+                    <div className="absolute left-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-sm font-semibold text-stone-800 shadow-md backdrop-blur-sm">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-stone-900">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-2 text-sm leading-6 text-stone-500">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="bg-stone-50 py-8 sm:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          {/* Header */}
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+              มีรูปแบบมุ้งลวด
+              <span className="block text-stone-500">
+                ให้เลือก 2 แบบ
+              </span>
+            </h2>
+
+            <p className="mt-5 text-base leading-7 text-stone-600 sm:text-lg">
+              เลือกรูปแบบมุ้งลวดที่เหมาะกับบ้านและความต้องการของคุณ
+              พร้อมดีไซน์ที่สวยงามและใช้งานได้อย่างลงตัว
+            </p>
+          </div>
+
+          {/* Products */}
+          <div className="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-2">
+            <div className="group overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
+
+              {/* Image */}
+              <div className="relative w-full overflow-hidden bg-stone-100">
+                <Image
+                  src="/catalog/insect-screens-and-nets/scl-1.jpg"
+                  alt="มุ้งลวดสีเทา"
+                  width={1200}
+                  height={900}
+                  className="h-auto w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <p className="text-sm leading-6 text-stone-600">
+                  โทนสีเทาเรียบง่าย เหมาะกับบ้านหลากหลายสไตล์
+                  ให้ความรู้สึกสะอาดและเป็นธรรมชาติ
+                </p>
+
+                <Link
+                  href="/preview/006"
+                  className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-stone-900 transition-colors hover:text-stone-500"
+                >
+                  ดูรายละเอียด
+                </Link>
+              </div>
+            </div>
+
+            {/* แบบที่ 2 */}
+            <div className="group overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
+              {/* Image */}
+              <div className="overflow-hidden bg-stone-100">
+                <Image
+                  src="/catalog/insect-screens-and-nets/scl-2.jpg"
+                  alt="มุ้งลวดสีดำ"
+                  width={1200}
+                  height={900}
+                  className="h-auto w-full object-contain transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <p className="text-sm leading-6 text-stone-600">
+                  โทนสีดำทันสมัย ให้ความรู้สึกเรียบหรู
+                  และช่วยเพิ่มความโดดเด่นให้กับตัวบ้าน
+                </p>
+
+                <Link
+                  href="/preview/006"
+                  className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-stone-900 transition-colors hover:text-stone-500"
+                >
+                  ดูรายละเอียด
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* --- FINAL CALL TO ACTION --- */}
       <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
         {/* พื้นหลังตกแต่งด้วยแสง Glow เบาๆ */}
@@ -234,7 +383,7 @@ export default function HomePage() {
           </span>
 
           <h2 className="text-3xl lg:text-4xl font-extrabold mb-6 leading-tight text-white">
-            ยกระดับความปลอดภัยและประหยัดค่าไฟให้บ้านคุณวันนี้
+            ยกระดับความปลอดภัย <br/> และประหยัดค่าไฟให้บ้านคุณวันนี้
           </h2>
 
           <p className="text-slate-300 mb-10 text-lg max-w-2xl mx-auto leading-relaxed">
@@ -251,11 +400,12 @@ export default function HomePage() {
             </Link>
 
             {/* ปุ่มประเมินหน้างานผ่าน LINE */}
-            <div
+            <Link
+            href="/contact"
               className="flex items-center justify-center gap-2.5 bg-emerald-500 text-white px-8 py-4 rounded-xl font-bold hover:bg-emerald-400 shadow-lg shadow-emerald-500/30 transition-all border border-emerald-400/30 transform hover:-translate-y-0.5 active:translate-y-0"
             >
               <span>แอดไลน์ส่งรูปประเมินหน้างาน</span>
-            </div>
+            </Link>
           </div>
 
           <p className="mt-8 text-slate-400 text-sm font-medium">

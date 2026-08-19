@@ -7,11 +7,8 @@ import {
   ShieldCheck,
   DoorClosed,
   Blinds,
-  Grid2X2,
-  Sparkle,
   Wrench,
   Award,
-  Package,
 } from "lucide-react";
 
 export interface ServiceQuickLink {
@@ -27,7 +24,7 @@ export const servicesQuickLinks: ServiceQuickLink[] = [
     icon: <Sun className="w-6 h-6 text-amber-500" />,
   },
   {
-    title: "โซล่าเซลล์ 5 kW (ขายไฟ)",
+    title: "โซล่าเซลล์ 5 kW",
     path: "/preview/001",
     icon: <Zap className="w-6 h-6 text-yellow-500" />,
   },

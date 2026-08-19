@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # ถ้าขอไฟล์หรือโฟลเดอร์ที่มีอยู่จริง ให้เปิดปกติ
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # ถ้าหาไฟล์ไม่เจอ ให้ส่งกลับไปที่ index.html
+  RewriteRule ^ index.html [L]
+</IfModule>

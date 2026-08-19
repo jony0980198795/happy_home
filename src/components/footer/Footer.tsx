@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Phone, Mail, Facebook, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -31,32 +31,32 @@ export default function Footer() {
           </h4>
           <ul className="space-y-3 text-sm">
             <li>
-              <Link href="/services/solar-air-conditioner" className="hover:text-blue-400 transition-colors">
+              <Link href="/preview/002/" className="hover:text-blue-400 transition-colors">
                 แอร์โซล่าเซลล์
               </Link>
             </li>
             <li>
-              <Link href="/services/solar-cell-5kw" className="hover:text-blue-400 transition-colors">
+              <Link href="/preview/001/" className="hover:text-blue-400 transition-colors">
                 โซล่าเซลล์ 5 kW (ระบบขายไฟ)
               </Link>
             </li>
             <li>
-              <Link href="/services/ev-charger" className="hover:text-blue-400 transition-colors">
+              <Link href="/preview/003/" className="hover:text-blue-400 transition-colors">
                 วงจรไฟฟ้าตู้ชาร์จ EV (2 รถ)
               </Link>
             </li>
             <li>
-              <Link href="/services/air-conditioning" className="hover:text-blue-400 transition-colors">
+              <Link href="/preview/004/" className="hover:text-blue-400 transition-colors">
                 ติดตั้ง / ล้าง / ย้าย แอร์บ้าน
               </Link>
             </li>
             <li>
-              <Link href="/services/cctv-security" className="hover:text-blue-400 transition-colors">
+              <Link href="/preview/005/" className="hover:text-blue-400 transition-colors">
                 กล้องวงจรปิด CCTV & ประตูรีโมท
               </Link>
             </li>
             <li>
-              <Link href="/services/curtain-partition" className="hover:text-blue-400 transition-colors">
+              <Link href="/preview/006/" className="hover:text-blue-400 transition-colors">
                 ฉากกั้นแอร์ ผ้าม่าน & มุ้งลวด
               </Link>
             </li>
@@ -83,8 +83,8 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-3">
               <Mail size={18} className="text-blue-500 shrink-0" />
-              <Link href="mailto:happyhomeservicehy@gmail.com" className="hover:text-white transition-colors text-xs">
-                happyhomeservicehy@gmail.com
+              <Link href="mailto:paisarn444@gmail.com" className="hover:text-white transition-colors text-xs">
+                paisarn444@gmail.com
               </Link>
             </li>
           </ul>
@@ -98,7 +98,7 @@ export default function Footer() {
           <div className="flex flex-col gap-3 mb-6">
             {/* Line Item */}
             <Link
-              href="https://line.me/ti/p/0861206859"
+              href={'/contact'}
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-4 p-2 rounded-2xl hover:bg-green-600/10 transition-all border border-transparent hover:border-green-500/30"

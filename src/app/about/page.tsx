@@ -1,8 +1,9 @@
 'use client'
 
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Target, Eye, Award, History, Users, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import Image from 'next/image';
+import { Target, Eye, Award, History, ShieldCheck, CheckCircle2} from 'lucide-react';
+import Link from 'next/link';
 
 export default function AboutUsPage() {
   return (
@@ -36,15 +37,13 @@ export default function AboutUsPage() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <img
-              src="/tmc_company/office.jpg"
-              alt="TMC History"
+            <Image
+              src={'/about/confirm.jpg'}
+              alt="Happy home"
+              width={600}
+              height={400}
               className="rounded-3xl shadow-2xl"
             />
-            <div className="absolute -bottom-6 -right-6 bg-blue-600 text-white p-8 rounded-2xl shadow-xl hidden md:block">
-              <p className="text-4xl font-bold mb-1">2017</p>
-              <p className="text-sm opacity-80 uppercase tracking-widest font-semibold">Year Established</p>
-            </div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -71,7 +70,7 @@ export default function AboutUsPage() {
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="text-blue-500 mt-1" size={20} />
-                <span className="text-slate-700 font-medium">ดูแลลูกค้าแล้วกว่า 50+ โครงการ</span>
+                <span className="text-slate-700 font-medium">ดูแลลูกค้าแล้วกว่า 100+ โครงการ</span>
               </div>
             </div>
           </motion.div>
@@ -93,7 +92,7 @@ export default function AboutUsPage() {
             </div>
             <h3 className="text-2xl font-bold mb-4">วิสัยทัศน์ (Vision)</h3>
             <p className="text-blue-50 leading-relaxed opacity-90 text-lg">
-              "มุ่งสู่การเป็นผู้นำด้านบริการติดตั้งระบบพลังงานสะอาดและโซลูชันดูแลบ้านครบวงจรในภาคใต้ ที่ส่งมอบความคุ้มค่า ความปลอดภัย และยกระดับคุณภาพชีวิตของทุกครัวเรือนอย่างยั่งยืน"
+              &quot;มุ่งสู่การเป็นผู้นำด้านบริการติดตั้งระบบพลังงานสะอาดและโซลูชันดูแลบ้านครบวงจรในภาคใต้ ที่ส่งมอบความคุ้มค่า ความปลอดภัย และยกระดับคุณภาพชีวิตของทุกครัวเรือนอย่างยั่งยืน&quot;
             </p>
           </motion.div>
           <motion.div
@@ -148,7 +147,7 @@ export default function AboutUsPage() {
               <p className="text-slate-600 mb-10 leading-relaxed text-lg">
                 เราดำเนินธุรกิจด้วยความโปร่งใสและได้รับการรับรองมาตรฐานวิชาชีพ
                 พร้อมด้วยผลงานที่ได้รับความไว้วางใจจากบ้านพักอาศัยและอาคารพาณิชย์มากกว่า
-                <span className="font-bold text-blue-600"> 500+ แห่งในพื้นที่หาดใหญ่-สงขลา</span>
+                <span className="font-bold text-blue-600"> 100+ แห่งในพื้นที่หาดใหญ่-สงขลา</span>
               </p>
               <div className="space-y-5">
                 {/* CARD 1 */}
@@ -167,7 +166,7 @@ export default function AboutUsPage() {
                     <ShieldCheck className="text-green-600" size={26} />
                   </div>
                   <span className="text-slate-800 font-semibold">
-                    ได้รับความไว้วางใจจากลูกค้าบ้านและธุรกิจในภาคใต้กว่า 50+ ครัวเรือน
+                    ได้รับความไว้วางใจจากลูกค้าบ้านและธุรกิจในภาคใต้กว่า 100+ ครัวเรือน
                   </span>
                 </div>
               </div>
@@ -175,26 +174,31 @@ export default function AboutUsPage() {
 
             {/* RIGHT CONTENT (LOGO TRUST / IMAGE) */}
             <div className="relative">
-              <div className="grid grid-cols-3 gap-6 opacity-80">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-6 opacity-80">
                 {[
-                  "/logo/betagroud.png",
-                  "/logo/gs.jpg",
-                  "/logo/interface.png",
+                  "/certificates/cer-01.jpg",
+                  "/certificates/cer-01.jpg",
                 ].map((logo, i) => (
-                  <div
+                  <Link
                     key={i}
-                    className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex items-center justify-center hover:shadow-md hover:scale-105 transition"
+                    href="/certified-license"
+                    className="block group"
                   >
-                    <img
-                      src={logo}
-                      alt="client logo"
-                      className="h-10 object-contain grayscale hover:grayscale-0 transition"
-                    />
-                  </div>
+                    <div className="relative w-full h-40 bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex items-center justify-center overflow-hidden hover:shadow-md hover:scale-105 transition cursor-pointer">
+                      <Image
+                        src={logo}
+                        alt={`Certificate Logo ${i + 1}`}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 33vw"
+                        className="object-contain p-2 grayscale group-hover:grayscale-0 transition duration-300"
+                      />
+                    </div>
+                  </Link>
                 ))}
               </div>
+
               {/* glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-200/20 to-transparent blur-2xl -z-10"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-200/20 to-transparent blur-2xl -z-10 pointer-events-none" />
             </div>
           </div>
         </div>

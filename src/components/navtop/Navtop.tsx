@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X} from "lucide-react";
 import Image from "next/image";
 
 export default function Navbar() {
@@ -23,6 +23,7 @@ export default function Navbar() {
         { name: "ผลงาน", href: "/portfolio" },
         { name: "เกี่ยวกับเรา", href: "/about" },
         { name: "ติดต่อเรา", href: "/contact" },
+        { name: "ใบรับรอง", href: "/certified-license" },
     ];
 
     return (
@@ -49,7 +50,7 @@ export default function Navbar() {
                             Happy
                         </span>
                         <span className="text-[9px] pt-1 font-extrabold uppercase tracking-[0.25em] text-slate-300 transition-colors group-hover:text-white mt-0.5">
-                            home service
+                            home service HY
                         </span>
                     </div>
                 </Link>
@@ -112,7 +113,7 @@ export default function Navbar() {
                     ))}
                     <div className="h-px bg-slate-800 my-1" />
                     <Link
-                        href="https://line.me/ti/p/@0613529166"
+                        href="/contact"
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => setIsOpen(false)}
@@ -121,7 +122,7 @@ export default function Navbar() {
                         <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                             <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967 1.739-1.907 2.572-3.844 2.572-6.002z" />
                         </svg>
-                        <span>Line: @0613529166</span>
+                        <span>Line: 0861206859</span>
                     </Link>
                 </div>
             </div>

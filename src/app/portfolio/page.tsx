@@ -1,10 +1,9 @@
 'use client'
 
 import React from 'react';
-import { CheckCircle, Briefcase, MessageSquare, Quote, ExternalLink, ArrowRight, ShieldCheck } from 'lucide-react';
-import Link from 'next/link';
-import Image from "next/image";
+import { ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const portfolioProjects = [
   {
@@ -62,11 +61,13 @@ export default function PortfolioPage() {
               transition={{ duration: 0.6 }}
               key={idx} className={`flex flex-col lg:flex-row gap-10 items-center ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
             >
-              <div className="w-full lg:w-1/2 overflow-hidden rounded-3xl shadow-xl">
-                <img
+              <div className="relative w-full lg:w-1/2 h-[350px] sm:h-[400px] overflow-hidden rounded-3xl shadow-xl">
+                <Image
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-500"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="w-full lg:w-1/2 space-y-6">

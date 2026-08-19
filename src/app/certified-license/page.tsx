@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Award, ShieldCheck, CheckCircle2, Eye, X, FileText, PhoneCall } from 'lucide-react';
+import { Award, ShieldCheck, CheckCircle2, Eye, X, FileText} from 'lucide-react';
 import { certificatesData, CertificateItem } from '@/src/data/certificateData';
 
 export default function CertifiedLicensePage() {

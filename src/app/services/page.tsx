@@ -12,10 +12,21 @@ interface ServiceItem {
   desc: string;
   tags: string[];
   filePath: string;
+  path:string;
   color: string;
 }
 
 const services: ServiceItem[] = [
+  {
+    id: "004",
+    title: "Air Conditioning Services",
+    titleTh: "บริการแอร์บ้านครบวงจร",
+    desc: "จำหน่าย ติดตั้ง ล้างทำความสะอาด ย้ายตำแหน่ง และย้ายคอยล์ร้อน/คอยล์เย็น แอร์ทุกยี่ห้อ โดยช่างผู้เชี่ยวชาญ เติมน้ำยาแอร์ ตรวจเช็กระบบไฟฟ้าและรั่วซึมก่อนส่งมอบ",
+    tags: ["ติดตั้งแอร์", "ล้างแอร์บ้าน", "ซ่อมแอร์", "ย้ายแอร์"],
+    filePath: "/catalog/air-conditioners/air-solar-03.jpg",
+    path:"/preview/",
+    color: "blue"
+  },
   {
     id: "001",
     title: "Solar Cell & On-Grid System",
@@ -23,6 +34,7 @@ const services: ServiceItem[] = [
     desc: "บริการออกแบบและติดตั้งระบบโซล่าเซลล์ On-Grid / Hybrid ทั้งบ้านพักอาศัยและอาคารพาณิชย์ ช่วยลดค่าไฟกลางวัน ดำเนินการขออนุญาตขนานการไฟฟ้านครหลวง/ภูมิภาคครบวงจร",
     tags: ["Solar Cell", "On-Grid 5kW", "Net Metering", "ลดค่าไฟ"],
     filePath: "/catalog/solar-cell-5kw-grid-tied/solar_01.jpg",
+    path:"/preview/",
     color: "amber"
   },
   {
@@ -32,6 +44,7 @@ const services: ServiceItem[] = [
     desc: "นวัตกรรมเครื่องปรับอากาศพลังงานแสงอาทิตย์ ดึงไฟจากแผงโซล่าเซลล์มาใช้โดยตรงในตอนกลางวัน ช่วยประหยัดค่าแอร์ได้สูงสุดถึง 80% เย็นฉ่ำ ทำงานต่อเนื่องแม้ไม่มีแดด",
     tags: ["Solar Air Condition", "Hybrid Solar", "Inverter", "ประหยัดพลังงาน"],
     filePath: "/catalog/air-conditioners/air-01.jpg",
+    path:"/preview/",
     color: "yellow"
   },
   {
@@ -41,16 +54,8 @@ const services: ServiceItem[] = [
     desc: "บริการเดินสายเมนไฟฟ้า วงจรย่อย และติดตั้ง Wallbox EV Charger รองรับการชาร์จรถยนต์ไฟฟ้า 1-2 คัน ตามมาตรฐานความปลอดภัยทางการไฟฟ้า พร้อมระบบป้องกันกระแสเกิน/ไฟรั่ว",
     tags: ["EV Charger", "Wallbox", "เดินสายไฟ EV", "ระบบไฟฟ้าบ้าน"],
     filePath: "/catalog/dual-ev-charger-circuits/ec_charger_01.jpg",
+    path:"/preview/",
     color: "emerald"
-  },
-  {
-    id: "004",
-    title: "Air Conditioning Services",
-    titleTh: "บริการแอร์บ้านครบวงจร",
-    desc: "จำหน่าย ติดตั้ง ล้างทำความสะอาด ย้ายตำแหน่ง และย้ายคอยล์ร้อน/คอยล์เย็น แอร์ทุกยี่ห้อ โดยช่างผู้เชี่ยวชาญ เติมน้ำยาแอร์ ตรวจเช็กระบบไฟฟ้าและรั่วซึมก่อนส่งมอบ",
-    tags: ["ติดตั้งแอร์", "ล้างแอร์บ้าน", "ซ่อมแอร์", "ย้ายแอร์"],
-    filePath: "/catalog/air-conditioners/air-solar-03.jpg",
-    color: "blue"
   },
   {
     id: "005",
@@ -59,15 +64,17 @@ const services: ServiceItem[] = [
     desc: "ติดตั้งระบบกล้องวงจรปิด CCTV แบบ IP Camera และ HD ดูออนไลน์ผ่านมือถือได้ 24 ชั่วโมง พร้อมบริการติดตั้งประตูรีโมทอัตโนมัติ และระบบคีย์การ์ดเข้า-ออกบ้าน/อาคาร",
     tags: ["CCTV", "กล้องวงจรปิด", "ประตูรีโมท", "Smart Home"],
     filePath: "/catalog/cctv-surveillance/cctv_01.jpg",
+    path:"/preview/",
     color: "indigo"
   },
   {
     id: "006",
     title: "Curtain & Partition Screen",
-    titleTh: "ฉากกั้นแอร์ ผ้าม่าน & มุ้งลวด",
+    titleTh: "ฉากกั้นแอร์ ผ้าม่าน & มุ้งลวดกันยุง",
     desc: "บริการวัดหน้างานและติดตั้งฉากกั้นห้อง/ฉากกั้นแอร์ PVC ผ้าม่านกัน UV มู่ลี่ และมุ้งลวดจีบกันแมลง ช่วยแบ่งพื้นที่ห้องและกักเก็บความเย็น เพิ่มประสิทธิภาพการทำงานของแอร์",
     tags: ["ฉากกั้นแอร์", "ผ้าม่านกัน UV", "มุ้งลวดจีบ", "กั้นห้อง"],
     filePath: "/catalog/partition-and-curtains/partition.jpg",
+    path:"/preview/",
     color: "teal"
   },
   {
@@ -77,6 +84,7 @@ const services: ServiceItem[] = [
     desc: "รับประกอบและปรับปรุงตู้เมนไฟฟ้า (MDB/DB) ตู้ควบคุมปั๊มน้ำ และระบบ ATS สลับไฟอัตโนมัติ สำหรับบ้านพักอาศัย อาคาร และโรงงานขนาดเล็ก โดยช่างมีใบอนุญาตมาตรฐานวิชาชีพ",
     tags: ["ตู้ไฟบ้าน", "MDB Panel", "ระบบ ATS", "เดินสายไฟ"],
     filePath: "/catalog/electrical-and-maintenance/electric_01.jpg",
+    path:"/preview/",
     color: "cyan"
   },
   {
@@ -86,7 +94,17 @@ const services: ServiceItem[] = [
     desc: "บริการงานโครงสร้างเหล็ก หลังคาโรงรถ งานต่อเติมครัว/ลานซักล้าง งานกั้นห้องผนังเบา และงานเคลือบพื้น Epoxy/PU สำหรับโรงรถหรือพื้นที่ใช้งานอุตสาหกรรม",
     tags: ["ต่อเติมบ้าน", "หลังคาโรงรถ", "ผนังเบา", "พื้น Epoxy"],
     filePath: "/catalog/home-renovation/home-renovation_01.jpg",
+    path:"/preview/",
     color: "slate"
+  }, {
+    id: "",
+    title: "Vacation Home & Rental Villa",
+    titleTh: "บริการปล่อยเช่าบ้านพักตากอากาศ บ้านเดี่ยว 3 ห้องนอน 4 ห้องน้ำ",
+    desc: "Planning a family or group trip to Hat Yai? Stay comfortably at Hatyai Luxe Stay, a private 2-storey townhouse (150 sqm) near Hat Yai Park. Accommodates up to 8 guests with 2 bedrooms, 4 queen beds, and 3 bathrooms. Fully equipped with kitchen, washing machine, Smart TV + Netflix, Wi-Fi, prayer mats, and private parking. Close to Central Hat Yai, Lee Garden, and Kim Yong Market.",
+    tags: ["บ้านพักตากอากาศ", "บ้านเช่าพักอาศัย", "รีโนเวทพร้อมอยู่", "บ้านพักหาดใหญ่"],
+    filePath: "/catalog/vacation-home/vacat-1.jpg",
+    path:"/other/",
+    color: "emerald"
   }
 ];
 
@@ -113,7 +131,7 @@ export default function ServicesPage() {
   return (
     <div className="bg-slate-50 min-h-screen py-20">
       <div className="max-w-7xl mx-auto px-6">
-        
+
         {/* Header Section */}
         <header className="text-center max-w-3xl mx-auto mb-20">
           <h1 className="text-4xl font-extrabold text-slate-900 mb-6">
@@ -136,7 +154,7 @@ export default function ServicesPage() {
           {services.map((service) => (
             <motion.div key={service.id} variants={cardVariants} className="h-full">
               <Link
-                href={`/preview/${service.id}`}
+                href={`${service.path}${service.id}`}
                 className="bg-white rounded-[2.5rem] p-4 border border-slate-100 shadow-sm hover:shadow-2xl cursor-pointer hover:-translate-y-2 transition-all duration-500 flex flex-col h-full group"
               >
                 {/* 1. ส่วนรูปภาพ */}

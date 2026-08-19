@@ -7,7 +7,7 @@ export const thaiTranslates = {
         { name: "ติดต่อเรา", href: "/contact" },
     ],
     home: {
-        badge: "ได้รับความไว้วางใจจากลูกค้า 110 ราย",
+        badge: "ได้รับความไว้วางใจจากลูกค้า 100 ราย",
         title: {
             highlight: "Happy Home Service HY",
             main: ""
